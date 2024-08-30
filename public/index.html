@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+   
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="theme-color" content="#000000" /> -->
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/symbol.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+
+    
+    <!-- ========================= CSS ========================= -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>cutm health</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- ========================= JS ========================= -->
+   <script src="assets/js/main.js"></script>
+
+   
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask Connection Example</title>
+</head>
+<body>
+    <h1>Connect to MetaMask</h1>
+    <button id="connectButton">Connect MetaMask</button>
+    <p id="status"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script>
+        let web3;
+
+        // Function to connect MetaMask
+        async function connectMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request account access if needed
+                    await ethereum.request({ method: 'eth_requestAccounts' });
+
+                    // We can use the accounts now
+                    web3 = new Web3(window.ethereum);
+                    const accounts = await web3.eth.getAccounts();
+                    document.getElementById('status').innerText = 'Connected: ' + accounts[0];
+                } catch (error) {
+                    console.error('User denied account access');
+                }
+            } else {
+                alert('MetaMask is not installed. Please install it to use this app.');
+            }
+        }
+
+        document.getElementById('connectButton').addEventListener('click', connectMetaMask);
+    </script>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+<script src="https://cdn.ethers.io/scripts/ethers-v4.min.js"></script>
